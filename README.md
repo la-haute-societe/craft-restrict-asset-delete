@@ -15,7 +15,7 @@ Just install the plugin from the Craft Plugin Store.
 ### Using Composer
 
   - Install with Composer from your project directory: `composer require la-haute-societe/craft-restrict-asset-delete`
-  - In the Craft Control Panel, go to Settings → Plugins and click the **Install** button for Elasticsearch.
+  - In the Craft Control Panel, go to Settings → Plugins and click the **Install** button for Restrict Asset Delete.
 
 
 ## Restrict Asset Delete Overview
@@ -33,4 +33,7 @@ Once the plugin activated, any attempt to delete an asset already linked to any 
 
 * Release it
 
+
 Brought to you by [![LHS Logo](resources/img/lhs.png) La Haute Société][lhs-site].
+
+[lhs-site]: https://www.lahautesociete.com
