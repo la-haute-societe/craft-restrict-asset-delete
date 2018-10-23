@@ -8,7 +8,6 @@
 namespace lhs\restrictassetdelete\actions;
 
 use Craft;
-use craft\base\ElementAction;
 use craft\elements\Asset;
 use craft\elements\db\ElementQueryInterface;
 use lhs\restrictassetdelete\RestrictAssetDelete;
@@ -20,34 +19,10 @@ use yii\base\Exception;
  * @author Pixel & Tonic, Inc. <support@pixelandtonic.com>
  * @since 3.0
  */
-class DeleteAssets extends ElementAction
+class DeleteAssets extends \craft\elements\actions\DeleteAssets
 {
     // Public Methods
     // =========================================================================
-
-    /**
-     * @inheritdoc
-     */
-    public function getTriggerLabel(): string
-    {
-        return Craft::t('app', 'Delete');
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public static function isDestructive(): bool
-    {
-        return true;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getConfirmationMessage()
-    {
-        return Craft::t('app', 'Are you sure you want to delete the selected assets?');
-    }
 
     /**
      * Performs the action on any elements that match the given criteria.
@@ -79,7 +54,7 @@ class DeleteAssets extends ElementAction
         }
 
         if (count($blockedAssets)) {
-            $this->setMessage(Craft::t('app', 'Some assets were not deleted because they are used.'));
+            $this->setMessage(Craft::t('restrict-asset-delete', 'Some assets were not deleted because they are used.'));
         } else {
             $this->setMessage(Craft::t('app', 'Assets deleted.'));
         }

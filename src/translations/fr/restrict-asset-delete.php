@@ -22,4 +22,5 @@
  */
 return [
     'Restrict Asset Delete plugin loaded' => 'Plugin Restrict Asset Delete chargé',
+    'Some assets were not deleted because they are used.' => 'Certaines ressources n\'ont pas été supprimées car elles sont utilisées.'
 ];
