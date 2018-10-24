@@ -10,7 +10,6 @@ namespace lhs\restrictassetdelete\actions;
 use Craft;
 use craft\elements\Asset;
 use craft\elements\db\ElementQueryInterface;
-use lhs\restrictassetdelete\RestrictAssetDelete;
 use yii\base\Exception;
 
 /**
@@ -33,17 +32,15 @@ class DeleteAssets extends \craft\elements\actions\DeleteAssets
      */
     public function performAction(ElementQueryInterface $query): bool
     {
-        $blockedAssets = [];
+        $success = true;
         try {
             foreach ($query->all() as $asset) {
                 /**
                  * @var Asset $asset
                  */
                 if (Craft::$app->getUser()->checkPermission('deleteFilesAndFoldersInVolume:' . $asset->volumeId)) {
-                    if (!RestrictAssetDelete::getInstance()->service->isUsed($asset)) {
-                        Craft::$app->getElements()->deleteElement($asset);
-                    } else {
-                        $blockedAssets[] = $asset;
+                    if (!Craft::$app->getElements()->deleteElement($asset)) {
+                        $success = false;
                     }
                 }
             }
@@ -53,9 +50,10 @@ class DeleteAssets extends \craft\elements\actions\DeleteAssets
             return false;
         }
 
-        if (count($blockedAssets)) {
+        if (!$success) {
             $this->setMessage(Craft::t('restrict-asset-delete', 'Some assets were not deleted because they are used.'));
-        } else {
+        }
+        else {
             $this->setMessage(Craft::t('app', 'Assets deleted.'));
         }
 

@@ -13,13 +13,11 @@ namespace lhs\restrictassetdelete;
 use Craft;
 use craft\base\Plugin;
 use craft\elements\Asset;
-use craft\events\PluginEvent;
+use craft\events\ModelEvent;
 use craft\events\RegisterElementActionsEvent;
-use craft\services\Plugins;
 use lhs\restrictassetdelete\models\Settings;
 use lhs\restrictassetdelete\services\RestrictAssetDeleteService;
 use yii\base\Event;
-use yii\helpers\VarDumper;
 
 /**
  * Craft plugins are very much like little applications in and of themselves. We’ve made
@@ -93,10 +91,22 @@ class RestrictAssetDelete extends Plugin
             Asset::EVENT_REGISTER_ACTIONS,
             function (RegisterElementActionsEvent $event) {
                 foreach ($event->actions as $i => $action) {
-                    Craft::debug(VarDumper::dumpAsString($action), __METHOD__);
                     if (is_string($action) && $action === 'craft\elements\actions\DeleteAssets') {
                         $event->actions[$i] = 'lhs\restrictassetdelete\actions\DeleteAssets';
                     }
+                }
+            }
+        );
+
+        Event::on(
+            Asset::class,
+            Asset::EVENT_BEFORE_DELETE,
+            function (ModelEvent $event) {
+                /** @var Asset $asset */
+                $asset = $event->sender;
+                if($this->service->isUsed($asset)) {
+                    $event->handled = true;
+                    $event->isValid = false;
                 }
             }
         );
