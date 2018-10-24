@@ -1,6 +1,6 @@
 {
     "name": "la-haute-societe/craft-restrict-asset-delete",
-    "description": "A plugin to prevent a used asset to be deleted.",
+    "description": "A Craft CMS plugin to prevent the deletion of a used asset.",
     "type": "craft-plugin",
     "version": "1.0.0",
     "keywords": [
@@ -11,8 +11,8 @@
         "restrict asset delete"
     ],
     "support": {
-        "docs": "https://github.com/la-haute-societe/restrict-asset-delete/blob/master/README.md",
-        "issues": "https://github.com/la-haute-societe/restrict-asset-delete/issues"
+        "docs": "https://github.com/la-haute-societe/craft-restrict-asset-delete/blob/master/README.md",
+        "issues": "https://github.com/la-haute-societe/craft-restrict-asset-delete/issues"
     },
     "license": "MIT",
     "authors": [
@@ -34,7 +34,7 @@
         "handle": "restrict-asset-delete",
         "hasCpSettings": false,
         "hasCpSection": false,
-        "changelogUrl": "https://raw.githubusercontent.com/la-haute-societe/restrict-asset-delete/master/CHANGELOG.md",
+        "changelogUrl": "https://raw.githubusercontent.com/la-haute-societe/craft-restrict-asset-delete/master/CHANGELOG.md",
         "components": {
             "restrictAssetDeleteService": "lhs\\restrictassetdelete\\services\\RestrictAssetDeleteService"
         },
