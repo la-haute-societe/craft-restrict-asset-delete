@@ -28,10 +28,10 @@ This plugin is for you!
 
 ## Using Restrict Asset Delete
 
-Once the plugin activated, any attempt to delete an asset already linked to any entry will be refused. No configuration needed.
+Once the plugin is activated, any attempt to delete an asset already linked to any entry will be refused. No configuration needed.
 
 > **Note:**
-> The plugin wont prevent linked assets within WYSIWYG editors fields from being deleted.
+> The plugin will not prevent linked assets within WYSIWYG editors fields from being deleted.
 
 
 ## Restrict Asset Delete Roadmap
