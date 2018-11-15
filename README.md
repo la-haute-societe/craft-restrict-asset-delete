@@ -36,7 +36,7 @@ Once the plugin is activated, any attempt to delete an asset already linked to a
 
 ## Restrict Asset Delete Roadmap
 
-* Release it
+* Add possiblity to disable the restriction per user (permissions)
 
 
 Brought to you by [![LHS Logo](resources/img/lhs.png) La Haute Société][lhs-site].
