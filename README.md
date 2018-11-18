@@ -22,21 +22,23 @@ Just install the plugin from the [Craft Plugin Store][craft-plugin-store].
 
 ## Restrict Asset Delete Overview
 
-Want to prevent administrators from deleting a used asset?
+Want to prevent contributors from deleting a used asset?
 This plugin is for you!
 
 
 ## Using Restrict Asset Delete
 
-Once the plugin is activated, any attempt to delete an asset already linked to any entry will be refused. No configuration needed.
+Once the plugin is activated, any attempt to delete an asset already linked to any entry by an unauthorized user will be refused.
 
 > **Note:**
 > The plugin will not prevent linked assets within WYSIWYG editors fields from being deleted.
 
+## Users Restriction
 
-## Restrict Asset Delete Roadmap
+The restriction can be set by using the relevant permission on a group or user level.
 
-* Add possiblity to disable the restriction per user (permissions)
+> **Note:**
+> By default, users with `Admin` permission are allowed to skip the restriction.
 
 
 Brought to you by [![LHS Logo](resources/img/lhs.png) La Haute Société][lhs-site].

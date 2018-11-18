@@ -15,6 +15,8 @@ use craft\base\Plugin;
 use craft\elements\Asset;
 use craft\events\ModelEvent;
 use craft\events\RegisterElementActionsEvent;
+use craft\events\RegisterUserPermissionsEvent;
+use craft\services\UserPermissions;
 use lhs\restrictassetdelete\models\Settings;
 use lhs\restrictassetdelete\services\RestrictAssetDeleteService;
 use yii\base\Event;
@@ -58,7 +60,7 @@ class RestrictAssetDelete extends Plugin
      *
      * @var string
      */
-    public $schemaVersion = '1.0.0';
+    public $schemaVersion = '1.1.0';
 
     // Public Methods
     // =========================================================================
@@ -84,6 +86,17 @@ class RestrictAssetDelete extends Plugin
         ]);
 
         /**
+         * Register plugin permissions
+         */
+        Event::on(
+            UserPermissions::class,
+            UserPermissions::EVENT_REGISTER_PERMISSIONS,
+            function (RegisterUserPermissionsEvent $event) {
+                $event->permissions['Restrict Asset Delete'] = $this->getPluginPermissions();
+            }
+        );
+
+        /**
          * Substitute Core DeleteAssets with plugin custom one
          */
         Event::on(
@@ -91,7 +104,10 @@ class RestrictAssetDelete extends Plugin
             Asset::EVENT_REGISTER_ACTIONS,
             function (RegisterElementActionsEvent $event) {
                 foreach ($event->actions as $i => $action) {
-                    if (is_string($action) && $action === 'craft\elements\actions\DeleteAssets') {
+                    if (is_string($action)
+                        && $action === 'craft\elements\actions\DeleteAssets'
+                        && !$this->canSkipRestriction()
+                    ) {
                         $event->actions[$i] = 'lhs\restrictassetdelete\actions\DeleteAssets';
                     }
                 }
@@ -104,7 +120,9 @@ class RestrictAssetDelete extends Plugin
             function (ModelEvent $event) {
                 /** @var Asset $asset */
                 $asset = $event->sender;
-                if($this->service->isUsed($asset)) {
+                if (!$this->canSkipRestriction()
+                    && $this->service->isUsed($asset)
+                ) {
                     $event->handled = true;
                     $event->isValid = false;
                 }
@@ -137,5 +155,24 @@ class RestrictAssetDelete extends Plugin
             ),
             __METHOD__
         );
+    }
+
+    /**
+     * Return the plugin custom permissions
+     * @return array
+     */
+    protected function getPluginPermissions(): array
+    {
+        $permissions = [
+            'restrict-asset-delete:skip-restriction' => [
+                'label' => Craft::t('restrict-asset-delete', 'Skip restriction'),
+            ]
+        ];
+        return $permissions;
+    }
+
+    protected function canSkipRestriction()
+    {
+        return Craft::$app->getUser()->getIsAdmin() || Craft::$app->user->can('restrict-asset-delete:skip-restriction');
     }
 }
