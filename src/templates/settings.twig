@@ -1,0 +1,24 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Restrict Asset Delete plugin for Craft CMS 3.x
+ *
+ * Restrict Asset Delete Settings.twig
+ *
+ * @author    Alban Jubert
+ * @copyright Copyright (c) 2018 Alban Jubert
+ * @link      https://www.lahautesociete.com
+ * @package   RestrictAssetDelete
+ * @since     1.1.0,1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("lhs\\restrictassetdelete\\assetbundles\\restrictassetdelete\\RestrictAssetDeleteAsset") %}
+
+{{ forms.lightswitchField({
+    label: 'Admin users skip restrictions'|t('restrict-asset-delete'),
+    name: 'adminCanSkipRestriction',
+    on: settings['adminCanSkipRestriction']
+}) }}
