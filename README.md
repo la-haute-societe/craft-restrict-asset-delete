@@ -37,8 +37,14 @@ Once the plugin is activated, any attempt to delete an asset already linked to a
 
 The restriction can be set by using the relevant permission on a group or user level.
 
+## Admin Restriction 
+
+You can determine if `Admin` users can skip the restriction by going to  Settings → Restrict Asset Delete.
+
+You can also copy and modify the plugin `config.php` file to `craft/config` as `restrict-asset-delete.php` to override that behavior.
+
 > **Note:**
-> By default, users with `Admin` permission are allowed to skip the restriction.
+> By default, users with `Admin` permission are **not** allowed to skip the restriction.
 
 
 Brought to you by [![LHS Logo](resources/img/lhs.png) La Haute Société][lhs-site].

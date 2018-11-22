@@ -158,6 +158,34 @@ class RestrictAssetDelete extends Plugin
     }
 
     /**
+     * Creates and returns the model used to store the plugin’s settings.
+     *
+     * @return \craft\base\Model|null
+     */
+    protected function createSettingsModel()
+    {
+        return new Settings();
+    }
+
+    /**
+     * Returns the rendered settings HTML, which will be inserted into the content
+     * block on the settings page.
+     *
+     * @return string The rendered settings HTML
+     * @throws \Twig_Error_Loader
+     * @throws \yii\base\Exception
+     */
+    protected function settingsHtml(): string
+    {
+        return Craft::$app->view->renderTemplate(
+            'restrict-asset-delete/settings',
+            [
+                'settings' => $this->getSettings()
+            ]
+        );
+    }
+
+    /**
      * Return the plugin custom permissions
      * @return array
      */
@@ -173,6 +201,6 @@ class RestrictAssetDelete extends Plugin
 
     protected function canSkipRestriction()
     {
-        return Craft::$app->getUser()->getIsAdmin() || Craft::$app->user->can('restrict-asset-delete:skip-restriction');
+        return (Craft::$app->getUser()->getIsAdmin() && $this->getSettings()->adminCanSkipRestriction) || Craft::$app->user->can('restrict-asset-delete:skip-restriction');
     }
 }

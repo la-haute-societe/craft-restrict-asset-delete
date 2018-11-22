@@ -32,7 +32,7 @@
     "extra": {
         "name": "Restrict Asset Delete",
         "handle": "restrict-asset-delete",
-        "hasCpSettings": false,
+        "hasCpSettings": true,
         "hasCpSection": false,
         "changelogUrl": "https://raw.githubusercontent.com/la-haute-societe/craft-restrict-asset-delete/master/CHANGELOG.md",
         "components": {

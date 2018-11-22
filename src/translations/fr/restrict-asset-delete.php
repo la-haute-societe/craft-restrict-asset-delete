@@ -21,7 +21,8 @@
  * @since     1.0.0
  */
 return [
-    'Restrict Asset Delete plugin loaded'                 => 'Plugin Restrict Asset Delete chargé',
-    'Some assets were not deleted because they are used.' => 'Certaines ressources n\'ont pas été supprimées car elles sont utilisées.',
-    'Skip restriction'                                    => 'Ignorer la restriction'
+    'Restrict Asset Delete plugin loaded'                     => 'Plugin Restrict Asset Delete chargé',
+    'Some assets were not deleted because they are used.'     => 'Certaines ressources n\'ont pas été supprimées car elles sont utilisées.',
+    'Skip restriction'                                        => 'Ignorer la restriction',
+    'Admin users skip restrictions'                           => 'Ignorer la restriction pour les utilisateurs Admin'
 ];
