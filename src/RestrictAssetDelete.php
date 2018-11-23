@@ -96,24 +96,6 @@ class RestrictAssetDelete extends Plugin
             }
         );
 
-        /**
-         * Substitute Core DeleteAssets with plugin custom one
-         */
-        Event::on(
-            Asset::class,
-            Asset::EVENT_REGISTER_ACTIONS,
-            function (RegisterElementActionsEvent $event) {
-                foreach ($event->actions as $i => $action) {
-                    if (is_string($action)
-                        && $action === 'craft\elements\actions\DeleteAssets'
-                        && !$this->canSkipRestriction()
-                    ) {
-                        $event->actions[$i] = 'lhs\restrictassetdelete\actions\DeleteAssets';
-                    }
-                }
-            }
-        );
-
         Event::on(
             Asset::class,
             Asset::EVENT_BEFORE_DELETE,
@@ -128,6 +110,26 @@ class RestrictAssetDelete extends Plugin
                 }
             }
         );
+
+        if (Craft::$app->getRequest()->getIsCpRequest()) {
+            /**
+             * Substitute Core DeleteAssets with plugin custom one
+             */
+            Event::on(
+                Asset::class,
+                Asset::EVENT_REGISTER_ACTIONS,
+                function (RegisterElementActionsEvent $event) {
+                    foreach ($event->actions as $i => $action) {
+                        if (is_string($action)
+                            && $action === 'craft\elements\actions\DeleteAssets'
+                            && !$this->canSkipRestriction()
+                        ) {
+                            $event->actions[$i] = 'lhs\restrictassetdelete\actions\DeleteAssets';
+                        }
+                    }
+                }
+            );
+        }
 
         /**
          * Logging in Craft involves using one of the following methods:
