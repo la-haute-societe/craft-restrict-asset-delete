@@ -43,7 +43,7 @@ class RestrictAssetDeleteAsset extends AssetBundle
     public function init()
     {
         // define the path that your publishable resources live
-        $this->sourcePath = "@lhs/restrictassetdelete/assetbundles/restrictassetdelete/dist";
+        $this->sourcePath = "@lhs/restrictassetdelete/assetbundles/RestrictAssetDelete/dist";
 
         // define the dependencies
         $this->depends = [
