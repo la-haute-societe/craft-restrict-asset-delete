@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2018 Alban Jubert
  */
 
-namespace lhs\restrictassetdelete\assetbundles\RestrictAssetDelete;
+namespace lhs\restrictassetdelete\assetbundles\cp;
 
 use Craft;
 use craft\web\AssetBundle;
@@ -43,7 +43,7 @@ class RestrictAssetDeleteAsset extends AssetBundle
     public function init()
     {
         // define the path that your publishable resources live
-        $this->sourcePath = "@lhs/restrictassetdelete/assetbundles/restrictassetdelete/dist";
+        $this->sourcePath = "@lhs/restrictassetdelete/assetbundles/cp/dist";
 
         // define the dependencies
         $this->depends = [
