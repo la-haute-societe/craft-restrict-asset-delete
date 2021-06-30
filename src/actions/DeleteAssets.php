@@ -1,8 +1,8 @@
 <?php
 /**
- * @link https://craftcms.com/
+ * @link      https://craftcms.com/
  * @copyright Copyright (c) Pixel & Tonic, Inc.
- * @license https://craftcms.github.io/license/
+ * @license   https://craftcms.github.io/license/
  */
 
 namespace lhs\restrictassetdelete\actions;
@@ -10,25 +10,22 @@ namespace lhs\restrictassetdelete\actions;
 use Craft;
 use craft\elements\Asset;
 use craft\elements\db\ElementQueryInterface;
+use Throwable;
 use yii\base\Exception;
 
 /**
- * DeleteAssets represents a Delete Assets element action.
+ * Delete Assets element action.
  *
- * @author Pixel & Tonic, Inc. <support@pixelandtonic.com>
- * @since 3.0
+ * @author Alban Jubert
+ * @since  1.0.0
  */
 class DeleteAssets extends \craft\elements\actions\DeleteAssets
 {
-    // Public Methods
-    // =========================================================================
-
     /**
      * Performs the action on any elements that match the given criteria.
-     *
      * @param ElementQueryInterface $query The element query defining which elements the action should affect.
      * @return bool Whether the action was performed successfully.
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function performAction(ElementQueryInterface $query): bool
     {
@@ -53,8 +50,7 @@ class DeleteAssets extends \craft\elements\actions\DeleteAssets
 
         if (!$success) {
             $this->setMessage(Craft::t('restrict-asset-delete', 'Some assets were not deleted because they are used.'));
-        }
-        else {
+        } else {
             $this->setMessage(Craft::t('app', 'Assets deleted.'));
         }
 

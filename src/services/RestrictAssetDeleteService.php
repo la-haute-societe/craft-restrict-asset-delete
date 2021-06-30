@@ -10,35 +10,22 @@
 
 namespace lhs\restrictassetdelete\services;
 
-use craft\db\Query;
-use lhs\restrictassetdelete\RestrictAssetDelete;
-use craft\elements\Asset;
-
-use Craft;
 use craft\base\Component;
+use craft\db\Query;
+use craft\elements\Asset;
 
 /**
  * RestrictAssetDeleteService Service
  *
- * All of your plugin’s business logic should go in services, including saving data,
- * retrieving data, etc. They provide APIs that your controllers, template variables,
- * and other plugins can interact with.
- *
- * https://craftcms.com/docs/plugins/services
- *
- * @author    Alban Jubert
- * @package   RestrictAssetDelete
- * @since     1.0.0
+ * @author Alban Jubert
+ * @since  1.0.0
  */
 class RestrictAssetDeleteService extends Component
 {
-    // Public Methods
-    // =========================================================================
-
     /**
-     * Determines if an asset is in use or not.
+     * Determines if an asset is used or not.
      *
-     * @param  AssetElement $asset
+     * @param Asset $asset
      * @return string
      */
     public function isUsed(Asset $asset)

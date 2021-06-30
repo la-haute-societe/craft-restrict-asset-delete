@@ -14,16 +14,7 @@ use craft\base\Model;
 
 /**
  * RestrictAssetDelete Settings Model
- *
- * This is a model used to define the plugin's settings.
- *
- * Models are containers for data. Just about every time information is passed
- * between services, controllers, and templates in Craft, it’s passed via a model.
- *
- * https://craftcms.com/docs/plugins/models
- *
  * @author    Alban Jubert
- * @package   RestrictAssetDelete
  * @since     1.1.0,1.0.0
  */
 class Settings extends Model
