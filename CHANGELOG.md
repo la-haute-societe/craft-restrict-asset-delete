@@ -5,6 +5,8 @@
 - Minor translation changes
 ### Fixed
 - PSR-4 autoloading issue (thanks [@ryssbowh](https://github.com/ryssbowh))
+- Change the check to determine if an asset can be deleted to mirror recent
+  Craft versions behavior (thanks [@mattcdavis1](https://github.com/mattcdavis1))
 
 ## 1.1.0 - 2018-11-22
 ### Added

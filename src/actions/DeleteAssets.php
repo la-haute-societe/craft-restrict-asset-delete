@@ -38,10 +38,11 @@ class DeleteAssets extends \craft\elements\actions\DeleteAssets
                 /**
                  * @var Asset $asset
                  */
-                if (Craft::$app->getUser()->checkPermission('deleteFilesAndFoldersInVolume:' . $asset->volumeId)) {
-                    if (!Craft::$app->getElements()->deleteElement($asset)) {
-                        $success = false;
-                    }
+                if (
+                    $asset->getIsDeletable()
+                    && !Craft::$app->getElements()->deleteElement($asset)
+                ) {
+                    $success = false;
                 }
             }
         } catch (Exception $exception) {
