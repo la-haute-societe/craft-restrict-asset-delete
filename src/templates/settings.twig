@@ -18,7 +18,7 @@
 {% do view.registerAssetBundle("lhs\\restrictassetdelete\\assetbundles\\cp\\RestrictAssetDeleteAsset") %}
 
 {{ forms.lightswitchField({
-    label: 'Admin users skip restrictions'|t('restrict-asset-delete'),
+    label: 'Admin users may ignore the restriction'|t('restrict-asset-delete'),
     name: 'adminCanSkipRestriction',
     on: settings['adminCanSkipRestriction']
 }) }}

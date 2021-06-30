@@ -1,6 +1,8 @@
 # Restrict Asset Delete Changelog
 
 ## Unreleased
+### Changed
+- Minor translation changes
 ### Fixed
 - PSR-4 autoloading issue (thanks [@ryssbowh](https://github.com/ryssbowh))
 
