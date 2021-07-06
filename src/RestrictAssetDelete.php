@@ -35,6 +35,8 @@ use yii\base\Event;
  */
 class RestrictAssetDelete extends Plugin
 {
+    public $schemaVersion = '1.1.0';
+
     public function init()
     {
         parent::init();
