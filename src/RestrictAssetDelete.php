@@ -13,6 +13,7 @@ namespace lhs\restrictassetdelete;
 use Craft;
 use craft\base\Model;
 use craft\base\Plugin;
+use craft\console\User;
 use craft\elements\actions\DeleteAssets as CraftDeleteAssetsAction;
 use craft\elements\Asset;
 use craft\events\ModelEvent;
@@ -134,10 +135,15 @@ class RestrictAssetDelete extends Plugin
 
     protected function canSkipRestriction()
     {
+        if (Craft::$app->user instanceof User) {
+            $hasPerm = Craft::$app->user->checkPermission('restrict-asset-delete:skip-restriction');
+        } else {
+            $hasPerm = Craft::$app->user->can('restrict-asset-delete:skip-restriction');
+        }
         return (
                 Craft::$app->getUser()->getIsAdmin()
                 && $this->getSettings()->adminCanSkipRestriction
             )
-            || Craft::$app->user->can('restrict-asset-delete:skip-restriction');
+            || $hasPerm
     }
 }
