@@ -4,7 +4,7 @@
 
 
 ## 1.1.4 - 2021-07-07
-- Fix a bug when removing assets from a console command (thanks [@ryssbowh])
+- Fix a bug when removing assets from a console command (thanks [@ryssbowh][])
 
 
 ## 1.1.3 - 2021-07-06
@@ -16,9 +16,9 @@
 ### Changed
 - Minor translation changes
 ### Fixed
-- PSR-4 autoloading issue (thanks [@ryssbowh])
+- PSR-4 autoloading issue (thanks [@ryssbowh][])
 - Change the check to determine if an asset can be deleted to mirror recent
-  Craft versions behavior (thanks [@mattcdavis1])
+  Craft versions behavior (thanks [@mattcdavis1][])
 
 
 ## 1.1.1 - 2020-18-28
