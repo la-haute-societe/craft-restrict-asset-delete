@@ -3,18 +3,22 @@
 ## Unreleased
 
 
+## 1.1.4 - 2021-07-07
+- Fix a bug when removing assets from a console command (thanks [@ryssbowh])
+
+
 ## 1.1.3 - 2021-07-06
 ### Fixed
-- re-add schemaVersion mistakenly removed in previous release
+- Re-add schemaVersion mistakenly removed in previous release
 
 
 ## 1.1.2 - 2021-06-30
 ### Changed
 - Minor translation changes
 ### Fixed
-- PSR-4 autoloading issue (thanks [@ryssbowh](https://github.com/ryssbowh))
+- PSR-4 autoloading issue (thanks [@ryssbowh])
 - Change the check to determine if an asset can be deleted to mirror recent
-  Craft versions behavior (thanks [@mattcdavis1](https://github.com/mattcdavis1))
+  Craft versions behavior (thanks [@mattcdavis1])
 
 
 ## 1.1.1 - 2020-18-28
@@ -31,3 +35,7 @@
 ## 1.0.0 - 2018-10-24
 ### Added
 - Initial release
+
+
+[@ryssbowh]: https://github.com/ryssbowh
+[@mattcdavis1]: https://github.com/mattcdavis1

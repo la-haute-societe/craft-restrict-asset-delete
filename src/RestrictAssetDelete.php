@@ -135,15 +135,11 @@ class RestrictAssetDelete extends Plugin
 
     protected function canSkipRestriction()
     {
-        if (Craft::$app->user instanceof User) {
-            $hasPerm = Craft::$app->user->checkPermission('restrict-asset-delete:skip-restriction');
-        } else {
-            $hasPerm = Craft::$app->user->can('restrict-asset-delete:skip-restriction');
-        }
+        $user = Craft::$app->user;
         return (
-                Craft::$app->getUser()->getIsAdmin()
+                $user->getIsAdmin()
                 && $this->getSettings()->adminCanSkipRestriction
             )
-            || $hasPerm
+            || $user->checkPermission('restrict-asset-delete:skip-restriction');
     }
 }
