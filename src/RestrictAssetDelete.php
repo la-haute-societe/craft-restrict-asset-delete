@@ -43,7 +43,10 @@ class RestrictAssetDelete extends Plugin
         parent::init();
 
         $this->setComponents([
-            'service' => RestrictAssetDeleteService::class,
+            'service' => [
+                'class' => RestrictAssetDeleteService::class,
+                'ignoreRevisions' => $this->settings->ignoreRevisions
+            ]
         ]);
 
         /**

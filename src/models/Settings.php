@@ -29,6 +29,13 @@ class Settings extends Model
      */
     public $adminCanSkipRestriction = false;
 
+    /**
+     * Ignore revisions when restricting deletions
+     * 
+     * @var boolean
+     */
+    public $ignoreRevisions = false;
+
     // Public Methods
     // =========================================================================
 
@@ -45,7 +52,7 @@ class Settings extends Model
     public function rules()
     {
         return [
-            ['adminCanSkipRestriction', 'boolean'],
+            [['adminCanSkipRestriction', 'ignoreRevisions'], 'boolean'],
             ['adminCanSkipRestriction', 'default', 'value' => false],
         ];
     }

@@ -23,6 +23,13 @@ use craft\elements\Asset;
 class RestrictAssetDeleteService extends Component
 {
     /**
+     * Ignore revisions when restricting deletions
+     * 
+     * @var boolean
+     */
+    public $ignoreRevisions;
+
+    /**
      * Determines if an asset is used or not.
      *
      * @param Asset $asset
@@ -30,11 +37,15 @@ class RestrictAssetDeleteService extends Component
      */
     public function isUsed(Asset $asset)
     {
-        return (new Query())
-            ->select(['id'])
+        $query = (new Query())
+            ->select(['relations.id'])
             ->from(['{{%relations}}'])
+            ->leftJoin('{{%elements}}', 'elements.id = relations.sourceId')
             ->where(['targetId' => $asset->id])
-            ->orWhere(['sourceId' => $asset->id])
-            ->exists();
+            ->orWhere(['sourceId' => $asset->id]);
+        if ($this->ignoreRevisions) {
+            $query->andWhere('elements.revisionId is NULL');
+        }
+        return $query->exists();
     }
 }
