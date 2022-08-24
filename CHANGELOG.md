@@ -3,6 +3,7 @@
 ## [Unreleased]
 ### Changed
 - [BREAKING]: Make the plugin compatible with Craft 4 (fixes [#10][])
+- Update plugin icon
 
 
 ## [1.2.0] - 2022-08-24
