@@ -1,14 +1,19 @@
 # Restrict Asset Delete Changelog
 
 ## [Unreleased]
+
+
+## [1.2.0] - 2022-08-24
 ### Added
-- Add a setting to allow deleting assets only used in revisions
+- Add a setting to allow deleting assets only used in revisions (thanks 
+  [@ryssbowh][], fixes [#7][])
 ### Fixed
 - the `adminCanSkipRestriction` setting was not honored; admin users were always 
   allowed to skip the restriction (thanks [@ryssbowh][], fixes [#6][])
 
 
 ## [1.1.4] - 2021-07-07
+### Fixed
 - Fix a bug when removing assets from a console command (thanks [@ryssbowh][])
 
 
@@ -45,6 +50,7 @@
 [@ryssbowh]: https://github.com/ryssbowh
 [@mattcdavis1]: https://github.com/mattcdavis1
 [#6]: https://github.com/la-haute-societe/craft-restrict-asset-delete/issues/6
+[#7]: https://github.com/la-haute-societe/craft-restrict-asset-delete/issues/7
 [Unreleased]: https://github.com/la-haute-societe/craft-restrict-asset-delete/compare/1.1.4...HEAD
 [1.0.0]: https://github.com/la-haute-societe/craft-restrict-asset-delete/releases/tag/1.0.0
 [1.1.0]: https://github.com/la-haute-societe/craft-restrict-asset-delete/compare/1.0.0...1.1.0
@@ -52,3 +58,4 @@
 [1.1.2]: https://github.com/la-haute-societe/craft-restrict-asset-delete/compare/1.1.1...1.1.2
 [1.1.3]: https://github.com/la-haute-societe/craft-restrict-asset-delete/compare/1.1.2...1.1.3
 [1.1.4]: https://github.com/la-haute-societe/craft-restrict-asset-delete/compare/1.1.3...1.1.4
+[1.2.0]: https://github.com/la-haute-societe/craft-restrict-asset-delete/compare/1.1.4...1.2.0
