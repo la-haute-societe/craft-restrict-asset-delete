@@ -1,12 +1,12 @@
-![LHS Restrict Asset Delete](resources/img/icon.png)
-
-# Restrict Asset Delete plugin for Craft CMS 3.x
+# Restrict Asset Delete plugin for Craft CMS
 
 A Craft CMS plugin to prevent the deletion of a used asset.
 
+
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0 or later.
+This plugin requires Craft CMS 4.0.0 or later. Version 1.x of this plugin supports Craft CMS 3.x.
+
 
 ## Installation
 
@@ -47,7 +47,7 @@ You can also copy and modify the plugin `config.php` file to `craft/config` as `
 > By default, users with `Admin` permission are **not** allowed to skip the restriction.
 
 
-Brought to you by [![LHS Logo](resources/img/lhs.png) La Haute Société][lhs-site].
+Brought to you by
+<a href="https://www.lahautesociete.com" target="_blank"><br><img src=".readme/logo-lahautesociete.png" height="100" alt="Logo La Haute Société" /></a>
 
-[lhs-site]: https://www.lahautesociete.com
 [craft-plugin-store]: https://plugins.craftcms.com
