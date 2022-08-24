@@ -1,6 +1,9 @@
 # Restrict Asset Delete Changelog
 
 ## [Unreleased]
+
+
+## [2.0.0] - 2022-08-25
 ### Changed
 - [BREAKING]: Make the plugin compatible with Craft 4 (fixes [#10][])
 - Update plugin icon
@@ -63,3 +66,4 @@
 [1.1.3]: https://github.com/la-haute-societe/craft-restrict-asset-delete/compare/1.1.2...1.1.3
 [1.1.4]: https://github.com/la-haute-societe/craft-restrict-asset-delete/compare/1.1.3...1.1.4
 [1.2.0]: https://github.com/la-haute-societe/craft-restrict-asset-delete/compare/1.1.4...1.2.0
+[2.0.0]: https://github.com/la-haute-societe/craft-restrict-asset-delete/compare/1.2.0...2.0.0
