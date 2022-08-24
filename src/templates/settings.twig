@@ -20,5 +20,13 @@
 {{ forms.lightswitchField({
     label: 'Admin users may ignore the restriction'|t('restrict-asset-delete'),
     name: 'adminCanSkipRestriction',
-    on: settings['adminCanSkipRestriction']
+    on: settings['adminCanSkipRestriction'],
+    fieldClass: 'first'
+}) }}
+
+{{ forms.lightswitchField({
+    label: 'Ignore revisions'|t('restrict-asset-delete'),
+    instructions: 'Assets only referenced in revisions can be deleted'|t('restrict-asset-delete'),
+    name: 'ignoreRevisions',
+    on: settings['ignoreRevisions']
 }) }}

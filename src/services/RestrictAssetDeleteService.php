@@ -13,6 +13,7 @@ namespace lhs\restrictassetdelete\services;
 use craft\base\Component;
 use craft\db\Query;
 use craft\elements\Asset;
+use lhs\restrictassetdelete\RestrictAssetDelete;
 
 /**
  * RestrictAssetDeleteService Service
@@ -30,11 +31,20 @@ class RestrictAssetDeleteService extends Component
      */
     public function isUsed(Asset $asset)
     {
-        return (new Query())
-            ->select(['id'])
+        $query = (new Query())
+            ->select(['relations.id'])
             ->from(['{{%relations}}'])
+            ->leftJoin('{{%elements}}', 'elements.id = relations.sourceId')
             ->where(['targetId' => $asset->id])
-            ->orWhere(['sourceId' => $asset->id])
-            ->exists();
+            ->orWhere(['sourceId' => $asset->id]);
+
+        if (RestrictAssetDelete::getInstance()->getSettings()->ignoreRevisions) {
+            $query->andWhere([
+                'elements.revisionId' => null,
+                'elements.dateDeleted' => null,
+            ]);
+        }
+
+        return $query->exists();
     }
 }

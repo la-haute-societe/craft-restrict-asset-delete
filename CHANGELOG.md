@@ -1,9 +1,11 @@
 # Restrict Asset Delete Changelog
 
 ## [Unreleased]
+### Added
+- Add a setting to allow deleting assets only used in revisions
 ### Fixed
 - the `adminCanSkipRestriction` setting was not honored; admin users were always 
-  allowed to skip the restriction (thanks [@ryssbowh][], fixes [#6])
+  allowed to skip the restriction (thanks [@ryssbowh][], fixes [#6][])
 
 
 ## [1.1.4] - 2021-07-07
