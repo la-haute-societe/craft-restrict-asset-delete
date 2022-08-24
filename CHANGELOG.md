@@ -1,6 +1,7 @@
 # Restrict Asset Delete Changelog
 
 ## [Unreleased]
+- [BREAKING]: Make the plugin compatible with Craft 4 (closes [#10][])
 
 
 ## [2.0.0] - 2022-08-25

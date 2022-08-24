@@ -19,25 +19,19 @@ use craft\base\Model;
  */
 class Settings extends Model
 {
-    // Public Properties
-    // =========================================================================
-
     /**
      * If set to true, admin will be able to skip the restriction
      *
      * @var bool
      */
-    public $adminCanSkipRestriction = false;
+    public bool $adminCanSkipRestriction = false;
 
     /**
      * Ignore revisions when restricting deletions
      *
      * @var bool
      */
-    public $ignoreRevisions = false;
-
-    // Public Methods
-    // =========================================================================
+    public bool $ignoreRevisions = false;
 
     /**
      * Returns the validation rules for attributes.
@@ -49,7 +43,7 @@ class Settings extends Model
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             [['adminCanSkipRestriction', 'ignoreRevisions'], 'boolean'],

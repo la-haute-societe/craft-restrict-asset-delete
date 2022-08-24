@@ -34,13 +34,10 @@ use craft\web\assets\cp\CpAsset;
  */
 class RestrictAssetDeleteAsset extends AssetBundle
 {
-    // Public Methods
-    // =========================================================================
-
     /**
      * Initializes the bundle.
      */
-    public function init()
+    public function init(): void
     {
         // define the path that your publishable resources live
         $this->sourcePath = "@lhs/restrictassetdelete/assetbundles/cp/dist";

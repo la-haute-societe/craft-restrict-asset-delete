@@ -27,9 +27,9 @@ class RestrictAssetDeleteService extends Component
      * Determines if an asset is used or not.
      *
      * @param Asset $asset
-     * @return string
+     * @return bool
      */
-    public function isUsed(Asset $asset)
+    public function isUsed(Asset $asset): bool
     {
         $query = (new Query())
             ->select(['relations.id'])

@@ -8,6 +8,7 @@
 namespace lhs\restrictassetdelete\actions;
 
 use Craft;
+use craft\elements\actions\Delete;
 use craft\elements\Asset;
 use craft\elements\db\ElementQueryInterface;
 use Throwable;
@@ -19,7 +20,7 @@ use yii\base\Exception;
  * @author Alban Jubert
  * @since  1.0.0
  */
-class DeleteAssets extends \craft\elements\actions\DeleteAssets
+class DeleteAssets extends Delete
 {
     /**
      * Performs the action on any elements that match the given criteria.
@@ -36,7 +37,7 @@ class DeleteAssets extends \craft\elements\actions\DeleteAssets
                  * @var Asset $asset
                  */
                 if (
-                    $asset->getIsDeletable()
+                    $asset->canDelete(Craft::$app->getUser()->getIdentity())
                     && !Craft::$app->getElements()->deleteElement($asset)
                 ) {
                     $success = false;

@@ -13,8 +13,7 @@ namespace lhs\restrictassetdelete;
 use Craft;
 use craft\base\Model;
 use craft\base\Plugin;
-use craft\console\User;
-use craft\elements\actions\DeleteAssets as CraftDeleteAssetsAction;
+use craft\elements\actions\Delete as DeleteAction;
 use craft\elements\Asset;
 use craft\events\ModelEvent;
 use craft\events\RegisterElementActionsEvent;
@@ -23,7 +22,11 @@ use craft\services\UserPermissions;
 use lhs\restrictassetdelete\actions\DeleteAssets as DeleteAssetsAction;
 use lhs\restrictassetdelete\models\Settings;
 use lhs\restrictassetdelete\services\RestrictAssetDeleteService;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 use yii\base\Event;
+use yii\base\Exception;
 
 /**
  * @author    Alban Jubert
@@ -36,9 +39,9 @@ use yii\base\Event;
  */
 class RestrictAssetDelete extends Plugin
 {
-    public $schemaVersion = '1.1.0';
+    public string $schemaVersion = '1.1.0';
 
-    public function init()
+    public function init(): void
     {
         parent::init();
 
@@ -81,7 +84,7 @@ class RestrictAssetDelete extends Plugin
                 Asset::EVENT_REGISTER_ACTIONS,
                 function (RegisterElementActionsEvent $event) {
                     foreach ($event->actions as $i => $action) {
-                        if ($action === CraftDeleteAssetsAction::class && !$this->canSkipRestriction()
+                        if ($action === DeleteAction::class && !$this->canSkipRestriction()
                         ) {
                             $event->actions[$i] = DeleteAssetsAction::class;
                         }
@@ -98,7 +101,7 @@ class RestrictAssetDelete extends Plugin
      *
      * @return Model|null
      */
-    protected function createSettingsModel()
+    protected function createSettingsModel(): ?Model
     {
         return new Settings();
     }
@@ -108,6 +111,10 @@ class RestrictAssetDelete extends Plugin
      * block on the settings page.
      *
      * @return string The rendered settings HTML
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
+     * @throws Exception
      */
     protected function settingsHtml(): string
     {
@@ -125,15 +132,14 @@ class RestrictAssetDelete extends Plugin
      */
     protected function getPluginPermissions(): array
     {
-        $permissions = [
+        return [
             'restrict-asset-delete:skip-restriction' => [
                 'label' => Craft::t('restrict-asset-delete', 'Ignore the restriction'),
             ],
         ];
-        return $permissions;
     }
 
-    protected function canSkipRestriction()
+    protected function canSkipRestriction(): bool
     {
         $user = Craft::$app->user;
 
